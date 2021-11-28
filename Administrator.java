@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Random;
 
 class Employee{
 	String firstName, lastName;
@@ -52,8 +53,9 @@ class Employee{
 public class Administrator{
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		System.out.println("Please enter your first name and last name:");
+		System.out.println("Please enter your first name: ");
 		String empName1 = in.next();
+		System.out.println("Please enter your last name: ");
 		String empName2 = in.next();
 		System.out.println("Various department options are: ");
 		System.out.println("1: Technical\n2: Admin\n3: Human Resources\n4: Legal");
