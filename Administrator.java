@@ -7,7 +7,8 @@ class Employee{
 	Employee(String firstName, String lastName){
 		System.out.println("Dear "+firstName+" your generated credentials are as follows: ");
 	}
-	void credentialService(int x){
+	int credentialService(int x){
+		int flag = 0;
 		switch(x){
 			case 1: option = "@tech.abc.com";
 			break;
@@ -17,18 +18,20 @@ class Employee{
 			break;
 			case 4: option = "@legal.abc.com";
 			break;
-			/*default: System.out.println("Invalid Option!");
-			System.exit(0);*/
+			default: System.out.println("Invalid Option!");
+			//System.exit(0);
+			flag = 1;
 		}
 		System.out.print(option);
+		return flag;
 	}
 	void generateEmailAddress(String firstName, String lastName){
-		System.out.print("Your email address is: "+firstName+lastName);
+		System.out.print("Your email address is: "+firstName.toLowerCase()+lastName.toLowerCase());
 	}
 	
 	void generatePassword(){
-		int lenght = 6;
-		System.out.println(password_trial(lenght));
+		int length = 6;
+		System.out.println(password_trial(length));
 	}
 	static char[] password_trial(int len){
 		System.out.print("\nYour password is: ");
@@ -42,7 +45,7 @@ class Employee{
 		for (int i = 0; i < len; i++){
 			password[i]=values.charAt(rndm_method.nextInt(values.length()));
 		}
-		return password;
+		return password;	
 	}
 	
 	/*void showCredentials(){
@@ -63,8 +66,11 @@ public class Administrator{
 		int a = in.nextInt();
 		Employee emp = new Employee(empName1,empName2);
 		//generateEmailAddress ge = new generateEmailAddress(empName1,empName2);
-		emp.generateEmailAddress(empName1,empName2);
-		emp.credentialService(a);
-		emp.generatePassword();
+		int result = emp.credentialService(a);
+		if(result != 1){
+			emp.generateEmailAddress(empName1,empName2);
+			emp.generatePassword();
+		}
+		//emp.generatePassword();
 	}
 }
